@@ -17,14 +17,100 @@ var no0 = document.querySelectorAll('div#buttons_row_4 > div.button')[1];
 var enter = document.querySelectorAll('div#buttons_row_4 > div.button')[2];
 var dividedBy = document.querySelectorAll('div#buttons_row_4 > div.button')[3];
 
+var firstNumber;
+var secondNumber;
+var operand;
+var solution;
+var workingNumber = "";
+var doTheMaths = {
+  '+': function (first, second) { return first + second },
+  '-': function (first, second) { return first - second },
+  '*': function (first, second) { return first * second },
+  '/': function (first, second) { return first / second },
+};
 
-// var button = document.getElementById('add_todo');
-// var textBox = document.getElementById('user_input');
-// var nextToDo = document.querySelectorAll("ul")[0];
 
-// button.addEventListener('click', function() {
-//   var newToDo = document.createElement('li');
-//   newToDo.innerHTML = textBox.value;
-//   nextToDo.appendChild(newToDo);
-//   textBox.value = '';
-// });
+function numberManager(number) {
+  workingNumber += number;
+  display.innerHTML = workingNumber;
+};
+
+function operandManager(operation) {
+  opDisplay.innerHTML = operation;
+  operand =  operation;
+  firstNumber = workingNumber;
+  workingNumber = "";
+}
+
+no1.addEventListener('click', function() {
+  numberManager("1");
+});
+
+no2.addEventListener('click', function() {
+  numberManager("2");
+});
+
+no3.addEventListener('click', function() {
+  numberManager("3");
+});
+
+no4.addEventListener('click', function() {
+  numberManager("4");
+});
+
+no5.addEventListener('click', function() {
+  numberManager("5");
+});
+
+no6.addEventListener('click', function() {
+  numberManager("6");
+});
+
+no7.addEventListener('click', function() {
+  numberManager("7");
+});
+
+no8.addEventListener('click', function() {
+  numberManager("8");
+});
+
+no9.addEventListener('click', function() {
+  numberManager("9");
+});
+
+no0.addEventListener('click', function() {
+  numberManager("0");
+});
+
+plus.addEventListener('click', function() {
+  operandManager("+");
+});
+
+minus.addEventListener('click', function() {
+  operandManager("-");
+});
+
+times.addEventListener('click', function() {
+  operandManager("*");
+});
+
+dividedBy.addEventListener('click', function() {
+  operandManager("/");
+});
+
+clear.addEventListener('click', function() {
+  opDisplay.innerHTML = '';
+  display.innerHTML = '';
+  firstNumber = "";
+  secondNumber = "";
+  operand = "";
+  solution = "";
+  workingNumber = "";
+
+});
+
+enter.addEventListener('click', function(){
+  solution = dotheMaths[operand](firstNumber, secondNumber);
+  display.innerHTML = solution;
+  opDisplay.innerHTML = '';
+});
