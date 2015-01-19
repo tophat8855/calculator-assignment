@@ -29,7 +29,6 @@ var doTheMaths = {
   '/': function (first, second) { return first / second },
 };
 
-
 function numberManager(number) {
   workingNumber += number;
   display.innerHTML = workingNumber;
@@ -106,11 +105,12 @@ clear.addEventListener('click', function() {
   operand = "";
   solution = "";
   workingNumber = "";
-
 });
 
 enter.addEventListener('click', function(){
-  solution = dotheMaths[operand](firstNumber, secondNumber);
+  secondNumber = workingNumber;
+  solution = doTheMaths[operand](parseFloat(firstNumber), parseFloat(secondNumber));
   display.innerHTML = solution;
+  workingNumber = solution;
   opDisplay.innerHTML = '';
 });
